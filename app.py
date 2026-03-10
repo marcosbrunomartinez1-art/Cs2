@@ -55,12 +55,7 @@ if st.button("Simular Partido"):
         c.execute("INSERT INTO estadisticas VALUES (?, ?, ?, ?)", (pid, j, s['K'], s['D']))
     conn.commit(); conn.close()
 
-    # Enviar a Google Sheets
-    url_google = "https://script.google.com/macros/s/AKfycbw3X3MZfFB8BtfBCLKRFzPJUR-L5JNJmaudn2A2_vlHrSM39T9C7SsUCds6w6KbPTxmTA/exec"
-    for jugador, s in stats.items():
-        try:
-            requests.post(url_google, json={"jugador": jugador, "kills": s['K'], "deaths": s['D']})
-        except: pass
+
 
     st.success(f"MARCADOR FINAL: Vitality {m_v} - {m_f} Furia | MVP: {mvp}")
     st.table(pd.DataFrame.from_dict(stats, orient='index'))
@@ -71,4 +66,5 @@ try:
         st.download_button("Descargar historial", file, "historial_cs2.db")
 except:
     st.info("Simula un partido para generar la base de datos.")
+
 
