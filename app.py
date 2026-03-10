@@ -56,7 +56,7 @@ if st.button("Simular Partido"):
     conn.commit(); conn.close()
 
     # Enviar a Google Sheets
-    url_google = "https://script.google.com/macros/s/AKfycbw7bV5Ue9o6EjBiofEWN2Zvqr1I1jSB3m8EVXMI_0ZsekIse5dUxmelnP2GUhUsExr/exec"
+    url_google = "https://script.google.com/macros/s/AKfycbw3X3MZfFB8BtfBCLKRFzPJUR-L5JNJmaudn2A2_vlHrSM39T9C7SsUCds6w6KbPTxmTA/exec"
     for jugador, s in stats.items():
         try:
             requests.post(url_google, json={"jugador": jugador, "kills": s['K'], "deaths": s['D']})
@@ -71,3 +71,4 @@ try:
         st.download_button("Descargar historial", file, "historial_cs2.db")
 except:
     st.info("Simula un partido para generar la base de datos.")
+
