@@ -1,0 +1,1 @@
+Simulador de CS2
