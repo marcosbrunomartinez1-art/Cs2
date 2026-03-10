@@ -57,3 +57,12 @@ if st.button("Simular Partido"):
     st.success(f"MARCADOR FINAL: Vitality {m_v} - {m_f} Furia | MVP: {mvp}")
     st.table(pd.DataFrame.from_dict(stats, orient='index'))
     st.balloons()
+
+# Agrega este bloque al final de tu app.py
+with open("partidos_cs2.db", "rb") as file:
+    st.download_button(
+        label="Descargar historial de partidos",
+        data=file,
+        file_name="historial_cs2.db",
+        mime="application/octet-stream"
+    )
