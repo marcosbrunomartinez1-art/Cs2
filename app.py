@@ -66,3 +66,10 @@ with open("partidos_cs2.db", "rb") as file:
         file_name="historial_cs2.db",
         mime="application/octet-stream"
     )
+import requests
+
+# Dentro de tu botón "Simular":
+url_google = "https://script.google.com/macros/s/AKfycbw7bV5Ue9o6EjBiofEWN2ZvqrlIlJsB3m8EVXMI_0ZsekIseSdUxmelnP2GUuhUsExr/exec"
+for jugador, s in stats.items():
+    datos = {"jugador": jugador, "kills": s['K'], "deaths": s['D']}
+    requests.post(url_google, json=datos)
